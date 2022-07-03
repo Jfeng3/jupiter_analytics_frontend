@@ -1,15 +1,39 @@
 {
-  "name": "jupiter_analytics_frontend",
-  "version": "0.1.0",
+  "name": "mantis-material-react",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^13.3.0",
-    "@testing-library/user-event": "^13.5.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
+    "@ant-design/colors": "^6.0.0",
+    "@ant-design/icons": "^4.7.0",
+    "@emotion/cache": "^11.9.3",
+    "@emotion/react": "^11.9.3",
+    "@emotion/styled": "^11.9.3",
+    "@mui/base": "^5.0.0-alpha.85",
+    "@mui/lab": "^5.0.0-alpha.86",
+    "@mui/material": "^5.8.4",
+    "@mui/styles": "^5.8.4",
+    "@reduxjs/toolkit": "^1.8.2",
+    "firebase": "^9.8.3",
+    "formik": "^2.2.9",
+    "framer-motion": "^4.1.17",
+    "lodash": "^4.17.21",
+    "prop-types": "^15.8.1",
+    "react": "^17.0.2",
+    "react-device-detect": "^2.2.2",
+    "react-dom": "^17.0.2",
+    "react-intl": "^5.25.1",
+    "react-otp-input-rc-17": "^2.4.1-minor",
+    "react-redux": "^7.2.6",
+    "react-router": "^6.3.0",
+    "react-router-dom": "^6.3.0",
+    "react-scripts": "^4.0.3",
+    "react-timer-hook": "^3.0.5",
+    "redux": "^4.2.0",
+    "simplebar": "^5.3.8",
+    "simplebar-react": "^2.4.1",
+    "stylis-plugin-rtl": "^2.1.1",
+    "web-vitals": "^2.1.4",
+    "yup": "^0.32.11"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -23,6 +47,11 @@
       "react-app/jest"
     ]
   },
+  "babel": {
+    "presets": [
+      "@babel/preset-react"
+    ]
+  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -34,5 +63,20 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.18.5",
+    "@babel/eslint-parser": "^7.18.2",
+    "eslint": "^7.27.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-react-app": "6.0.0",
+    "eslint-plugin-flowtype": "^5.7.2",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.30.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "prettier": "^2.7.1",
+    "react-error-overlay": "6.0.9"
   }
 }
