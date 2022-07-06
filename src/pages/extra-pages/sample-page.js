@@ -30,8 +30,12 @@ class SamplePage extends React.Component{
   }
 
   componentDidMount() {
-    fetch(`/api/page-views`)
-      .then(res => res.json())
+    fetch(`/api/page-views`, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    }).then(res => res.json())
       .then(json => this.setState({ rows: json }));
   }
 
