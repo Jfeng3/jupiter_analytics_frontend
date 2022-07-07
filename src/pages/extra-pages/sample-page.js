@@ -30,13 +30,15 @@ class SamplePage extends React.Component{
   }
 
   componentDidMount() {
-    fetch(`/api/page-views`, {
+
+    fetch(`https://jupiter-analytics-backend.herokuapp.com/api/page-views`, { //send to http:localhost:3000/api
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
       }
     }).then(res => res.json())
-      .then(json => this.setState({ rows: json }));
+      .then(json => this.setState({ rows: json }))
+      .catch(err => console.log(err))
   }
 
 
