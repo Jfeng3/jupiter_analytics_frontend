@@ -9,14 +9,9 @@ import React, { Component } from 'react';
 
 // ==============================|| SAMPLE PAGE ||============================== //
 const columns = [
-  { field: 'anonymousId', headerName: 'anonymousId', width: 150 },
-  { field: 'messageId', headerName: 'messageId', width: 150 },
-  { field: 'originalTimestamp', headerName: 'originalTimestamp', width: 150 },
-  { field: 'receivedAt', headerName: 'receivedAt', width: 150 },
-  { field: 'sentAt', headerName: 'sentAt', width: 150 },
   { field: 'timestamp', headerName: 'timestamp', width: 150 },
   { field: 'type', headerName: 'type', width: 150 },
-  { field: 'context', headerName: 'context', width: 150 },
+  { field: 'ip', headerName: 'ip', width: 150 },
   { field: 'visitor', headerName: 'visitor', width: 150 },
 ]
 
@@ -26,7 +21,7 @@ class SamplePage extends React.Component{
   constructor(props) {
     super(props);
     this.state = {rows: [{ id: 1, col1: 'Hello', col2: 'World' }]
-       };
+    };
   }
 
   componentDidMount() {
@@ -37,10 +32,20 @@ class SamplePage extends React.Component{
         'Accept': 'application/json'
       }
     }).then(res => res.json())
-      .then(json => this.setState({ rows: json }))
+      .then(json => this.setState({
+          rows: json.map((item, index, array) => {
+            return {
+              id: item.id,
+              timestamp: item.timestamp,
+              ip: item.context.ip,
+              type: item.type,
+              visitor: item.visitor
+            };
+          })
+        })
+      )
       .catch(err => console.log(err))
   }
-
 
   componentWillUnmount() {
   }
@@ -49,11 +54,11 @@ class SamplePage extends React.Component{
     console.log(Object.keys(this.state.rows[0]));
 
     return (
-    <MainCard title="Sample Card">
-      <div style={{height: 300, width: '100%'}}>
-        {<DataGrid rows={this.state.rows} columns={columns}/>}
-      </div>
-    </MainCard>
+      <MainCard title="Sample Card">
+        <div style={{height: 300, width: '100%'}}>
+          {<DataGrid rows={this.state.rows} columns={columns}/>}
+        </div>
+      </MainCard>
     )
   }
 }
