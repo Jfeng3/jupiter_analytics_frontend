@@ -22,39 +22,7 @@ const MainRoutes = {
   children: [
     {
       path: '/',
-      element: (
-        <AuthGuard>
-          <MainLayout />
-        </AuthGuard>
-      ),
-      children: [
-        {
-          path: 'sample-page',
-          element: <SamplePage />
-        }
-      ]
-    },
-    {
-      path: '/maintenance',
-      element: <CommonLayout />,
-      children: [
-        {
-          path: '404',
-          element: <MaintenanceError />
-        },
-        {
-          path: '500',
-          element: <MaintenanceError500 />
-        },
-        {
-          path: 'under-construction',
-          element: <MaintenanceUnderConstruction />
-        },
-        {
-          path: 'coming-soon',
-          element: <MaintenanceComingSoon />
-        }
-      ]
+      element: <SamplePage />
     }
   ]
 };

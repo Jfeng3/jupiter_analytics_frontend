@@ -14,16 +14,7 @@ import { FirebaseProvider as AuthProvider } from 'contexts/FirebaseContext';
 const App = () => (
   <ThemeCustomization>
     {/* <RTLLayout> */}
-    <Locales>
-      <ScrollTop>
-        <AuthProvider>
-          <>
             <Routes />
-            <Snackbar />
-          </>
-        </AuthProvider>
-      </ScrollTop>
-    </Locales>
     {/* </RTLLayout> */}
   </ThemeCustomization>
 );
