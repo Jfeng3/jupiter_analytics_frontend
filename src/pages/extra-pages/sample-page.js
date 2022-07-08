@@ -45,18 +45,10 @@ class SamplePage extends React.Component{
       {
         "group": "J9DZ F37AP",
         "value": 1200
-      },
-      {
-        "group": "YEL48 Q6XK YEL48",
-        "value": 10000
-      },
-      {
-        "group": "Misc",
-        "value": 25000
       }
     ],
         options: {
-      "title": "Pie",
+      "title": "Source/Medium",
       "resizable": true,
       "height": "400px"
     }
@@ -113,7 +105,7 @@ class SamplePage extends React.Component{
     console.log(Object.keys(this.state.rows[0]));
 
     return (
-      <MainCard title="Sample Card">
+      <MainCard title="Dashboard">
         <div style={{height: 300, width: '100%'}}>
           {<DataGrid rows={this.state.rows} columns={columns}/>}
         </div>
