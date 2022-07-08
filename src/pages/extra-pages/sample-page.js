@@ -6,6 +6,12 @@ import MainCard from 'components/MainCard';
 import {BarChartOutlined} from "@ant-design/icons";
 import { DataGrid, GridRowsProp, GridColDef } from '@mui/x-data-grid';
 import React, { Component } from 'react';
+import ReactDOM from "react-dom";
+
+import "@carbon/styles/css/styles.css";
+
+import "@carbon/charts/styles.css";
+import { PieChart } from "@carbon/charts-react";
 
 // ==============================|| SAMPLE PAGE ||============================== //
 const columns = [
@@ -20,9 +26,41 @@ const columns = [
 class SamplePage extends React.Component{
   constructor(props) {
     super(props);
-    this.state = {rows: [{ id: 1, col1: 'Hello', col2: 'World' }]
+    this.state = {rows: [{ id: 1, col1: 'Hello', col2: 'World' }],
+    data: [
+      {
+        "group": "2V2N 9KYPM version 1",
+        "value": 20000
+      },
+      {
+        "group": "L22I P66EP L22I P66EP L22I P66EP",
+        "value": 65000
+      },
+      {
+        "group": "JQAI 2M4L1",
+        "value": 75000
+      },
+      {
+        "group": "J9DZ F37AP",
+        "value": 1200
+      },
+      {
+        "group": "YEL48 Q6XK YEL48",
+        "value": 10000
+      },
+      {
+        "group": "Misc",
+        "value": 25000
+      }
+    ],
+        options: {
+      "title": "Pie",
+      "resizable": true,
+      "height": "400px"
+    }
     };
   }
+
 
   componentDidMount() {
 
@@ -41,7 +79,22 @@ class SamplePage extends React.Component{
               type: item.type,
               visitor: item.visitor
             };
-          })
+          }),
+          data: Object.values(
+            json.map((item, index, array) => {
+              return {
+                id: item.id,
+                timestamp: item.timestamp,
+                ip: item.context.ip,
+                type: item.type,
+                visitor: item.visitor
+              };
+            })
+            .reduce((c, {ip}) => {
+            c[ip] = c[ip] || {group: ip,value: 0};
+            c[ip].value++;
+            return c;
+          }, {}))
         })
       )
       .catch(err => console.log(err))
@@ -58,7 +111,15 @@ class SamplePage extends React.Component{
         <div style={{height: 300, width: '100%'}}>
           {<DataGrid rows={this.state.rows} columns={columns}/>}
         </div>
+        <div>
+      	<PieChart
+			data={this.state.data}
+			options={this.state.options}>
+		</PieChart>
+
+        </div>
       </MainCard>
+      
     )
   }
 }
