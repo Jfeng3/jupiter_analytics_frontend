@@ -18,7 +18,9 @@ const columns = [
   { field: 'timestamp', headerName: 'timestamp', width: 150 },
   { field: 'type', headerName: 'type', width: 150 },
   { field: 'ip', headerName: 'ip', width: 150 },
-  { field: 'visitor', headerName: 'visitor', width: 150 },
+  { field: 'path', headerName: 'path', width: 150 },
+  { field: 'referrer', headerName: 'referrer', width: 150 },
+  { field: 'visitor', headerName: 'visitor', width: 150 }
 ]
 
 // 'id', 'anonymousId', 'messageId', 'originalTimestamp', 'receivedAt', 'sentAt', 'timestamp', 'type', 'context', 'visitor'
@@ -77,6 +79,8 @@ class SamplePage extends React.Component{
               timestamp: item.timestamp,
               ip: item.context.ip,
               type: item.type,
+              path: item.context.page.path,
+              referrer: item.context.page.referrer || "direct",
               visitor: item.visitor
             };
           }),
@@ -87,12 +91,14 @@ class SamplePage extends React.Component{
                 timestamp: item.timestamp,
                 ip: item.context.ip,
                 type: item.type,
+                path: item.context.page.path,
+                referrer: item.context.page.referrer || "direct",
                 visitor: item.visitor
               };
             })
-            .reduce((c, {ip}) => {
-            c[ip] = c[ip] || {group: ip,value: 0};
-            c[ip].value++;
+            .reduce((c, {referrer}) => {
+            c[referrer] = c[referrer] || {group: referrer,value: 0};
+            c[referrer].value++;
             return c;
           }, {}))
         })
@@ -119,7 +125,7 @@ class SamplePage extends React.Component{
 
         </div>
       </MainCard>
-      
+
     )
   }
 }
